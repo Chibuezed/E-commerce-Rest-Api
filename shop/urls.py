@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProductListView, ProductDetailView, OrderListCreateView, RegisterView
+from .views import ProductListView, ProductDetailView, OrderListCreateView, RegisterView, CreateCheckoutSessionView, StripeWebhookView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -9,4 +9,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('create-checkout-session/', CreateCheckoutSessionView.as_view(), name='create-checkout'),
+    path('webhook/', StripeWebhookView.as_view(), name='stripe-webhook')
 ]

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'shop'
+    'shop',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'rest_project.wsgi.application'
+#WSGI_APPLICATION = 'rest_project.wsgi.application'
 
 
 # Database
@@ -144,4 +145,15 @@ DATABASES = {
         default='sqlite:///db.sqlite3',
         conn_max_age=600
     )
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': "JWT Authorization header using the Bearer scheme."
+        }
+    }
 }
